@@ -1,0 +1,10 @@
+15/02/2019 03:05:26 PM [1] INFO  TraceLogger  -  Trace : start up came 
+15/02/2019 03:05:26 PM [1] INFO  TraceLogger  -  Trace : start up last 
+15/02/2019 05:38:00 PM [1] INFO  TraceLogger  -  Trace : start up came 
+15/02/2019 05:38:00 PM [1] INFO  TraceLogger  -  Trace : start up last 
+15/02/2019 06:20:03 PM [1] INFO  TraceLogger  -  Trace : start up came 
+15/02/2019 06:20:03 PM [1] INFO  TraceLogger  -  Trace : start up last 
+15/02/2019 07:02:35 PM [1] INFO  TraceLogger  -  Trace : start up came 
+15/02/2019 07:02:35 PM [1] INFO  TraceLogger  -  Trace : start up last 
+15/02/2019 07:06:24 PM [1] INFO  TraceLogger  -  Trace : start up came 
+15/02/2019 07:06:24 PM [1] INFO  TraceLogger  -  Trace : start up last 

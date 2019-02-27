@@ -1,0 +1,216 @@
+25/02/2019 05:04:50 PM [1] INFO  TraceLogger  -  Trace : start up came 
+25/02/2019 05:04:51 PM [1] INFO  TraceLogger  -  Trace : start up last 
+25/02/2019 05:04:51 PM [118] INFO  TraceLogger  -  Trace : login validation start
+25/02/2019 05:04:51 PM [121] INFO  TraceLogger  -  Trace : login validation start
+25/02/2019 05:04:51 PM [65] INFO  TraceLogger  -  Trace : login validation start
+25/02/2019 05:07:02 PM [121] INFO  TraceLogger  -  Trace : login validation start
+25/02/2019 05:08:03 PM [116] INFO  TraceLogger  -  Trace : login validation start
+25/02/2019 05:08:42 PM [118] INFO  TraceLogger  -  Trace : login validation start
+25/02/2019 05:08:42 PM [118] INFO  TraceLogger  -  Trace : UserName and password matched
+25/02/2019 05:08:42 PM [118] INFO  TraceLogger  -  Trace : Username narasimha nakka
+25/02/2019 05:08:42 PM [118] INFO  TraceLogger  -  Trace : CompId 10
+25/02/2019 05:08:42 PM [127] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result web api
+25/02/2019 05:08:42 PM [127] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result try block
+25/02/2019 05:09:04 PM [65] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result web api
+25/02/2019 05:09:04 PM [65] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result try block
+25/02/2019 05:09:26 PM [97] INFO  TraceLogger  -  Trace : came to Put ManageCompaugeUserController web api
+25/02/2019 05:09:26 PM [97] INFO  TraceLogger  -  Trace : came to put try ManageCompaugeUserController web api
+25/02/2019 05:09:26 PM [127] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result web api
+25/02/2019 05:09:26 PM [127] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result try block
+25/02/2019 05:10:20 PM [49] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result web api
+25/02/2019 05:10:20 PM [49] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result try block
+25/02/2019 05:11:24 PM [127] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result web api
+25/02/2019 05:11:24 PM [127] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result try block
+25/02/2019 05:13:42 PM [49] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result web api
+25/02/2019 05:13:42 PM [49] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result try block
+25/02/2019 05:14:18 PM [65] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result web api
+25/02/2019 05:14:18 PM [65] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result try block
+25/02/2019 05:15:41 PM [49] INFO  TraceLogger  -  Trace : came to Put ManageCompaugeUserController web api
+25/02/2019 05:15:41 PM [49] INFO  TraceLogger  -  Trace : came to put try ManageCompaugeUserController web api
+25/02/2019 05:15:42 PM [115] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result web api
+25/02/2019 05:15:42 PM [115] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result try block
+25/02/2019 05:20:48 PM [65] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result web api
+25/02/2019 05:20:48 PM [65] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result try block
+25/02/2019 05:21:25 PM [65] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result web api
+25/02/2019 05:21:25 PM [65] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result try block
+25/02/2019 05:24:01 PM [110] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result web api
+25/02/2019 05:24:01 PM [110] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result try block
+25/02/2019 05:26:40 PM [109] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result web api
+25/02/2019 05:26:40 PM [109] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result try block
+25/02/2019 05:26:42 PM [110] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result web api
+25/02/2019 05:26:42 PM [110] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result try block
+25/02/2019 05:31:53 PM [109] INFO  TraceLogger  -  Trace : login validation start
+25/02/2019 05:32:31 PM [104] INFO  TraceLogger  -  Trace : login validation start
+25/02/2019 05:35:47 PM [109] INFO  TraceLogger  -  Trace : login validation start
+25/02/2019 05:35:47 PM [109] INFO  TraceLogger  -  Trace : UserName and password matched
+25/02/2019 05:35:47 PM [109] INFO  TraceLogger  -  Trace : Username narasimha nakka
+25/02/2019 05:35:47 PM [109] INFO  TraceLogger  -  Trace : CompId 10
+25/02/2019 05:35:47 PM [123] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result web api
+25/02/2019 05:35:47 PM [123] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result try block
+25/02/2019 05:35:58 PM [105] INFO  TraceLogger  -  Trace : came to Put ManageCompaugeUserController web api
+25/02/2019 05:35:58 PM [105] INFO  TraceLogger  -  Trace : came to put try ManageCompaugeUserController web api
+25/02/2019 05:35:58 PM [109] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result web api
+25/02/2019 05:35:58 PM [109] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result try block
+25/02/2019 05:38:46 PM [109] INFO  TraceLogger  -  Trace : came to Put ManageCompaugeUserController web api
+25/02/2019 05:38:46 PM [109] INFO  TraceLogger  -  Trace : came to put try ManageCompaugeUserController web api
+25/02/2019 05:38:46 PM [119] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result web api
+25/02/2019 05:38:46 PM [119] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result try block
+25/02/2019 05:42:19 PM [95] INFO  TraceLogger  -  Trace : login validation start
+25/02/2019 05:42:19 PM [95] INFO  TraceLogger  -  Trace : UserName and password matched
+25/02/2019 05:42:19 PM [95] INFO  TraceLogger  -  Trace : Username narasimha nakka
+25/02/2019 05:42:19 PM [95] INFO  TraceLogger  -  Trace : CompId 10
+25/02/2019 05:42:19 PM [123] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result web api
+25/02/2019 05:42:19 PM [123] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result try block
+25/02/2019 05:42:32 PM [72] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result web api
+25/02/2019 05:42:32 PM [72] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result try block
+25/02/2019 05:42:36 PM [123] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result web api
+25/02/2019 05:42:36 PM [123] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result try block
+25/02/2019 05:42:39 PM [100] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result web api
+25/02/2019 05:42:39 PM [100] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result try block
+25/02/2019 05:43:02 PM [109] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result web api
+25/02/2019 05:43:02 PM [109] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result try block
+25/02/2019 05:43:46 PM [95] INFO  TraceLogger  -  Trace : login validation start
+25/02/2019 05:43:46 PM [95] INFO  TraceLogger  -  Trace : UserName and password matched
+25/02/2019 05:43:46 PM [95] INFO  TraceLogger  -  Trace : Username narasimha nakka
+25/02/2019 05:43:46 PM [95] INFO  TraceLogger  -  Trace : CompId 10
+25/02/2019 05:43:46 PM [72] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result web api
+25/02/2019 05:43:46 PM [72] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result try block
+25/02/2019 05:46:44 PM [83] INFO  TraceLogger  -  Trace : login validation start
+25/02/2019 05:46:55 PM [95] INFO  TraceLogger  -  Trace : login validation start
+25/02/2019 05:46:55 PM [95] INFO  TraceLogger  -  Trace : UserName and password matched
+25/02/2019 05:46:55 PM [95] INFO  TraceLogger  -  Trace : Username narasimha nakka
+25/02/2019 05:46:55 PM [95] INFO  TraceLogger  -  Trace : CompId 10
+25/02/2019 05:46:55 PM [95] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result web api
+25/02/2019 05:46:55 PM [95] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result try block
+25/02/2019 05:47:39 PM [100] INFO  TraceLogger  -  Trace : login validation start
+25/02/2019 05:47:39 PM [100] INFO  TraceLogger  -  Trace : UserName and password matched
+25/02/2019 05:47:39 PM [100] INFO  TraceLogger  -  Trace : Username narasimha nakka
+25/02/2019 05:47:39 PM [100] INFO  TraceLogger  -  Trace : CompId 10
+25/02/2019 05:47:39 PM [83] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result web api
+25/02/2019 05:47:39 PM [83] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result try block
+25/02/2019 05:50:30 PM [43] INFO  TraceLogger  -  Trace : came to AllLeads put web api
+25/02/2019 05:50:30 PM [43] INFO  TraceLogger  -  Trace : came to AllLeads try put web api
+25/02/2019 05:56:57 PM [1] INFO  TraceLogger  -  Trace : start up came 
+25/02/2019 05:56:57 PM [1] INFO  TraceLogger  -  Trace : start up last 
+25/02/2019 05:59:26 PM [1] INFO  TraceLogger  -  Trace : start up came 
+25/02/2019 05:59:26 PM [1] INFO  TraceLogger  -  Trace : start up last 
+25/02/2019 06:08:21 PM [1] INFO  TraceLogger  -  Trace : start up came 
+25/02/2019 06:08:21 PM [1] INFO  TraceLogger  -  Trace : start up last 
+25/02/2019 06:09:18 PM [1] INFO  TraceLogger  -  Trace : start up came 
+25/02/2019 06:09:18 PM [1] INFO  TraceLogger  -  Trace : start up last 
+25/02/2019 06:10:23 PM [1] INFO  TraceLogger  -  Trace : start up came 
+25/02/2019 06:10:23 PM [1] INFO  TraceLogger  -  Trace : start up last 
+25/02/2019 06:14:30 PM [1] INFO  TraceLogger  -  Trace : start up came 
+25/02/2019 06:14:30 PM [1] INFO  TraceLogger  -  Trace : start up last 
+25/02/2019 06:14:30 PM [6] INFO  TraceLogger  -  Trace : login validation start
+25/02/2019 06:14:45 PM [9] INFO  TraceLogger  -  Trace : login validation start
+25/02/2019 06:14:45 PM [9] INFO  TraceLogger  -  Trace : UserName and password matched
+25/02/2019 06:14:45 PM [9] INFO  TraceLogger  -  Trace : Username narasimha nakka
+25/02/2019 06:14:45 PM [9] INFO  TraceLogger  -  Trace : CompId 10
+25/02/2019 06:14:46 PM [8] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result web api
+25/02/2019 06:14:46 PM [8] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result try block
+25/02/2019 06:46:26 PM [36] INFO  TraceLogger  -  Trace : login validation start
+25/02/2019 06:46:26 PM [36] INFO  TraceLogger  -  Trace : UserName and password matched
+25/02/2019 06:46:26 PM [36] INFO  TraceLogger  -  Trace : Username narasimha nakka
+25/02/2019 06:46:26 PM [36] INFO  TraceLogger  -  Trace : CompId 10
+25/02/2019 06:47:06 PM [10] INFO  TraceLogger  -  Trace : login validation start
+25/02/2019 06:47:06 PM [10] INFO  TraceLogger  -  Trace : UserName and password matched
+25/02/2019 06:47:06 PM [10] INFO  TraceLogger  -  Trace : Username narasimha nakka
+25/02/2019 06:47:06 PM [10] INFO  TraceLogger  -  Trace : CompId 10
+25/02/2019 06:52:15 PM [48] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result web api
+25/02/2019 06:52:15 PM [48] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result try block
+25/02/2019 07:07:21 PM [50] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result web api
+25/02/2019 07:07:21 PM [50] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result try block
+25/02/2019 07:31:57 PM [86] INFO  TraceLogger  -  Trace : login validation start
+25/02/2019 07:31:57 PM [86] INFO  TraceLogger  -  Trace : UserName and password matched
+25/02/2019 07:31:57 PM [86] INFO  TraceLogger  -  Trace : Username narasimha nakka
+25/02/2019 07:31:57 PM [86] INFO  TraceLogger  -  Trace : CompId 10
+25/02/2019 07:33:34 PM [79] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result web api
+25/02/2019 07:33:34 PM [79] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result try block
+25/02/2019 08:27:58 PM [16] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result web api
+25/02/2019 08:27:58 PM [16] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result try block
+25/02/2019 08:32:07 PM [12] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result web api
+25/02/2019 08:32:07 PM [12] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result try block
+25/02/2019 08:48:02 PM [91] INFO  TraceLogger  -  Trace : login validation start
+25/02/2019 08:48:02 PM [91] INFO  TraceLogger  -  Trace : UserName and password matched
+25/02/2019 08:48:02 PM [91] INFO  TraceLogger  -  Trace : Username narasimha nakka
+25/02/2019 08:48:02 PM [91] INFO  TraceLogger  -  Trace : CompId 10
+25/02/2019 08:48:06 PM [89] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result web api
+25/02/2019 08:48:06 PM [89] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result try block
+25/02/2019 08:48:45 PM [91] INFO  TraceLogger  -  Trace : filse save
+25/02/2019 08:48:46 PM [89] INFO  TraceLogger  -  Trace : filse save
+25/02/2019 08:49:05 PM [89] INFO  TraceLogger  -  Trace : filse save
+25/02/2019 08:49:24 PM [91] INFO  TraceLogger  -  Trace : filse save
+25/02/2019 10:05:39 PM [43] INFO  TraceLogger  -  Trace : login validation start
+25/02/2019 10:05:40 PM [43] INFO  TraceLogger  -  Trace : UserName and password matched
+25/02/2019 10:05:40 PM [43] INFO  TraceLogger  -  Trace : Username narasimha nakka
+25/02/2019 10:05:40 PM [43] INFO  TraceLogger  -  Trace : CompId 10
+25/02/2019 10:09:01 PM [36] INFO  TraceLogger  -  Trace : login validation start
+25/02/2019 10:09:01 PM [36] INFO  TraceLogger  -  Trace : UserName and password matched
+25/02/2019 10:09:01 PM [36] INFO  TraceLogger  -  Trace : Username narasimha nakka
+25/02/2019 10:09:01 PM [36] INFO  TraceLogger  -  Trace : CompId 10
+25/02/2019 10:09:09 PM [44] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result web api
+25/02/2019 10:09:09 PM [44] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result try block
+25/02/2019 10:09:53 PM [36] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result web api
+25/02/2019 10:09:53 PM [36] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result try block
+25/02/2019 10:10:01 PM [40] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result web api
+25/02/2019 10:10:01 PM [40] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result try block
+25/02/2019 10:10:06 PM [45] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result web api
+25/02/2019 10:10:06 PM [45] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result try block
+25/02/2019 10:10:11 PM [44] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result web api
+25/02/2019 10:10:11 PM [44] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result try block
+25/02/2019 10:10:33 PM [33] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result web api
+25/02/2019 10:10:33 PM [33] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result try block
+25/02/2019 10:10:42 PM [33] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result web api
+25/02/2019 10:10:42 PM [33] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result try block
+25/02/2019 10:11:33 PM [33] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result web api
+25/02/2019 10:11:33 PM [33] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result try block
+25/02/2019 10:17:08 PM [36] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result web api
+25/02/2019 10:17:08 PM [36] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result try block
+25/02/2019 10:17:27 PM [45] INFO  TraceLogger  -  Trace : came to Post ManageCompaugeUserController web api
+25/02/2019 10:17:27 PM [45] INFO  TraceLogger  -  Trace : came to Post try ManageCompaugeUserController web api
+25/02/2019 10:17:27 PM [45] INFO  TraceLogger  -  Trace : login comPid10
+25/02/2019 10:17:31 PM [49] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result web api
+25/02/2019 10:17:31 PM [49] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result try block
+25/02/2019 10:28:51 PM [36] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result web api
+25/02/2019 10:28:51 PM [36] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result try block
+25/02/2019 10:29:04 PM [49] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result web api
+25/02/2019 10:29:04 PM [49] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result try block
+25/02/2019 10:29:09 PM [51] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result web api
+25/02/2019 10:29:09 PM [51] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result try block
+25/02/2019 10:30:59 PM [36] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result web api
+25/02/2019 10:30:59 PM [36] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result try block
+25/02/2019 10:31:57 PM [36] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result web api
+25/02/2019 10:31:57 PM [36] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result try block
+25/02/2019 10:32:43 PM [36] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result web api
+25/02/2019 10:32:43 PM [36] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result try block
+25/02/2019 10:33:58 PM [49] INFO  TraceLogger  -  Trace : came to Post ManageCompaugeUserController web api
+25/02/2019 10:33:58 PM [49] INFO  TraceLogger  -  Trace : came to Post try ManageCompaugeUserController web api
+25/02/2019 10:33:58 PM [49] INFO  TraceLogger  -  Trace : login comPid10
+25/02/2019 10:33:58 PM [55] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result web api
+25/02/2019 10:33:58 PM [55] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result try block
+25/02/2019 10:34:53 PM [55] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result web api
+25/02/2019 10:34:53 PM [55] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result try block
+25/02/2019 10:34:56 PM [58] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result web api
+25/02/2019 10:34:56 PM [58] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result try block
+25/02/2019 10:35:06 PM [49] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result web api
+25/02/2019 10:35:06 PM [49] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result try block
+25/02/2019 10:35:20 PM [55] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result web api
+25/02/2019 10:35:20 PM [55] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result try block
+25/02/2019 10:35:41 PM [36] INFO  TraceLogger  -  Trace : came to Post ManageCompaugeUserController web api
+25/02/2019 10:35:41 PM [36] INFO  TraceLogger  -  Trace : came to Post try ManageCompaugeUserController web api
+25/02/2019 10:35:41 PM [36] INFO  TraceLogger  -  Trace : login comPid10
+25/02/2019 10:35:41 PM [49] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result web api
+25/02/2019 10:35:41 PM [49] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result try block
+25/02/2019 10:35:49 PM [58] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result web api
+25/02/2019 10:35:49 PM [58] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result try block
+25/02/2019 10:36:20 PM [55] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result web api
+25/02/2019 10:36:20 PM [55] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result try block
+25/02/2019 10:36:25 PM [55] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result web api
+25/02/2019 10:36:25 PM [55] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result try block
+25/02/2019 10:36:30 PM [55] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result web api
+25/02/2019 10:36:30 PM [55] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result try block
+25/02/2019 10:36:33 PM [55] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result web api
+25/02/2019 10:36:33 PM [55] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result try block
+25/02/2019 10:36:47 PM [60] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result web api
+25/02/2019 10:36:47 PM [60] INFO  TraceLogger  -  Trace : Came to GetGetAllCompaugeUsers_Result try block

@@ -1,0 +1,41 @@
+20/02/2019 05:05:50 PM [1] INFO  TraceLogger  -  Trace : start up came 
+20/02/2019 05:05:50 PM [1] INFO  TraceLogger  -  Trace : start up last 
+20/02/2019 05:06:21 PM [9] INFO  TraceLogger  -  Trace : login validation start
+20/02/2019 05:06:25 PM [9] INFO  TraceLogger  -  Trace : UserName and password matched
+20/02/2019 05:06:25 PM [9] INFO  TraceLogger  -  Trace : Username surya
+20/02/2019 05:06:25 PM [9] INFO  TraceLogger  -  Trace : CompId 1
+20/02/2019 05:10:40 PM [12] INFO  TraceLogger  -  Trace : login validation start
+20/02/2019 05:10:40 PM [12] INFO  TraceLogger  -  Trace : UserName and password matched
+20/02/2019 05:10:40 PM [12] INFO  TraceLogger  -  Trace : Username surya
+20/02/2019 05:10:40 PM [12] INFO  TraceLogger  -  Trace : CompId 1
+20/02/2019 05:17:57 PM [26] INFO  TraceLogger  -  Trace : login validation start
+20/02/2019 05:18:29 PM [29] INFO  TraceLogger  -  Trace : login validation start
+20/02/2019 05:18:59 PM [29] INFO  TraceLogger  -  Trace : UserName and password matched
+20/02/2019 05:19:33 PM [29] INFO  TraceLogger  -  Trace : Username surya
+20/02/2019 05:19:34 PM [29] INFO  TraceLogger  -  Trace : CompId 1
+20/02/2019 05:24:58 PM [35] INFO  TraceLogger  -  Trace : login validation start
+20/02/2019 05:24:58 PM [35] INFO  TraceLogger  -  Trace : Exception at GrantResourceOwnerCredentialsSystem.NullReferenceException: Object reference not set to an instance of an object.
+   at CompaugesWebApi.ApplicationOAuthProvider.<GrantResourceOwnerCredentials>d__1.MoveNext()
+20/02/2019 05:25:14 PM [40] INFO  TraceLogger  -  Trace : login validation start
+20/02/2019 05:25:17 PM [40] INFO  TraceLogger  -  Trace : UserName and password matched
+20/02/2019 05:25:20 PM [40] INFO  TraceLogger  -  Trace : Username surya
+20/02/2019 05:25:21 PM [40] INFO  TraceLogger  -  Trace : CompId 1
+20/02/2019 05:53:21 PM [1] INFO  TraceLogger  -  Trace : start up came 
+20/02/2019 05:53:21 PM [1] INFO  TraceLogger  -  Trace : start up last 
+20/02/2019 05:53:26 PM [8] INFO  TraceLogger  -  Trace : login validation start
+20/02/2019 05:53:27 PM [8] INFO  TraceLogger  -  Trace : UserName and password matched
+20/02/2019 05:53:27 PM [8] INFO  TraceLogger  -  Trace : Username surya
+20/02/2019 05:53:27 PM [8] INFO  TraceLogger  -  Trace : CompId 1
+20/02/2019 05:54:13 PM [5] INFO  TraceLogger  -  Trace : login validation start
+20/02/2019 05:54:13 PM [5] INFO  TraceLogger  -  Trace : Exception at GrantResourceOwnerCredentialsSystem.NullReferenceException: Object reference not set to an instance of an object.
+   at CompaugesWebApi.ApplicationOAuthProvider.<GrantResourceOwnerCredentials>d__1.MoveNext()
+20/02/2019 05:54:18 PM [7] INFO  TraceLogger  -  Trace : login validation start
+20/02/2019 05:54:19 PM [7] INFO  TraceLogger  -  Trace : UserName and password matched
+20/02/2019 05:54:19 PM [7] INFO  TraceLogger  -  Trace : Username surya
+20/02/2019 05:54:19 PM [7] INFO  TraceLogger  -  Trace : CompId 1
+20/02/2019 07:31:51 PM [1] INFO  TraceLogger  -  Trace : start up came 
+20/02/2019 07:31:51 PM [1] INFO  TraceLogger  -  Trace : start up last 
+20/02/2019 07:31:58 PM [7] INFO  TraceLogger  -  Trace : login validation start
+20/02/2019 07:32:01 PM [7] INFO  TraceLogger  -  Trace : UserName and password matched
+20/02/2019 07:32:01 PM [7] INFO  TraceLogger  -  Trace : Username surya
+20/02/2019 07:32:01 PM [7] INFO  TraceLogger  -  Trace : CompId 1

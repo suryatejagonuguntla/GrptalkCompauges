@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GTStagingNewModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'GTStagingNew.dbo.AdWordLeads' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="AdWordLeads">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Mobile" Type="varchar" MaxLength="20" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="Type" Type="tinyint" />
+    <Property Name="InsertedAt" Type="datetime" />
+    <Property Name="LeadType" Type="tinyint" />
+    <Property Name="IsAssigned" Type="tinyint" />
+    <Property Name="FullName" Type="nvarchar" MaxLength="100" />
+    <Property Name="Comments" Type="nvarchar" MaxLength="500" />
+    <Property Name="Source" Type="varchar" MaxLength="50" />
+    <Property Name="Gclid" Type="varchar" MaxLength="100" />
+    <Property Name="QueryString" Type="varchar" MaxLength="2500" />
+    <Property Name="UrlReferer" Type="nvarchar" MaxLength="2000" />
+    <Property Name="PricingPlan" Type="varchar" MaxLength="100" />
+    <Property Name="CompId" Type="int" />
+    <Property Name="Address" Type="varchar" MaxLength="2000" />
+    <Property Name="UpdatedAt" Type="datetime" />
+    <Property Name="Company" Type="varchar" MaxLength="300" />
+    <Property Name="LeadStage" Type="tinyint" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'GTStagingNew.dbo.CompuageLogins' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="CompuageLogins">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="CompuageId" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CompuageId" Type="int" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="256" />
+  </EntityType>
+  <EntityType Name="CompuageRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Role" Type="varchar" MaxLength="25" />
+    <Property Name="IsActive" Type="tinyint" />
+    <Property Name="CreatedTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Compuages">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="64" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="256" Nullable="false" />
+    <Property Name="Mobile" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="64" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="256" Nullable="false" />
+    <Property Name="RoleId" Type="tinyint" />
+    <Property Name="IsActive" Type="tinyint" />
+    <Property Name="CreatedBy" Type="tinyint" />
+    <Property Name="CreatedTime" Type="datetime" />
+    <Property Name="UpdatedTime" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'GTStagingNew.dbo.LeadStages' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="LeadStages">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Stage" Type="varchar" MaxLength="200" />
+    <Property Name="isActive" Type="bit" />
+  </EntityType>
+  <Association Name="Fk_RoleId_Compuages">
+    <End Role="CompuageRoles" Type="Self.CompuageRoles" Multiplicity="0..1" />
+    <End Role="Compuages" Type="Self.Compuages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CompuageRoles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Compuages">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="GetAllCompaugeUsers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="mode" Type="tinyint" Mode="In" />
+    <Parameter Name="fromDate" Type="varchar" Mode="In" />
+    <Parameter Name="toDate" Type="varchar" Mode="In" />
+    <Parameter Name="searchInput" Type="varchar" Mode="In" />
+    <Parameter Name="retVal" Type="tinyint" Mode="InOut" />
+    <Parameter Name="retMsg" Type="varchar" Mode="InOut" />
+  </Function>
+  <Function Name="ManageCompaugeLeads" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SearchInput" Type="varchar" Mode="In" />
+    <Parameter Name="Deals" Type="varchar" Mode="In" />
+    <Parameter Name="leadStages" Type="varchar" Mode="In" />
+    <Parameter Name="fromDate" Type="varchar" Mode="In" />
+    <Parameter Name="toDate" Type="varchar" Mode="In" />
+    <Parameter Name="resellerNames" Type="varchar" Mode="In" />
+    <Parameter Name="retVal" Type="tinyint" Mode="InOut" />
+    <Parameter Name="retMsg" Type="varchar" Mode="InOut" />
+  </Function>
+  <Function Name="ManageCompaugeUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="mode" Type="tinyint" Mode="In" />
+    <Parameter Name="compId" Type="int" Mode="In" />
+    <Parameter Name="username" Type="varchar" Mode="In" />
+    <Parameter Name="password" Type="varchar" Mode="In" />
+    <Parameter Name="confirmPassword" Type="varchar" Mode="In" />
+    <Parameter Name="Name" Type="varchar" Mode="In" />
+    <Parameter Name="Mobile" Type="varchar" Mode="In" />
+    <Parameter Name="Email" Type="varchar" Mode="In" />
+    <Parameter Name="createdby" Type="int" Mode="In" />
+    <Parameter Name="roleId" Type="tinyint" Mode="In" />
+    <Parameter Name="retVal" Type="tinyint" Mode="InOut" />
+    <Parameter Name="retMsg" Type="varchar" Mode="InOut" />
+  </Function>
+  <EntityContainer Name="GTStagingNewModelStoreContainer">
+    <EntitySet Name="CompuageRoles" EntityType="Self.CompuageRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Compuages" EntityType="Self.Compuages" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AdWordLeads" EntityType="Self.AdWordLeads" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [AdWordLeads].[Id] AS [Id], 
+    [AdWordLeads].[Mobile] AS [Mobile], 
+    [AdWordLeads].[Email] AS [Email], 
+    [AdWordLeads].[Type] AS [Type], 
+    [AdWordLeads].[InsertedAt] AS [InsertedAt], 
+    [AdWordLeads].[LeadType] AS [LeadType], 
+    [AdWordLeads].[IsAssigned] AS [IsAssigned], 
+    [AdWordLeads].[FullName] AS [FullName], 
+    [AdWordLeads].[Comments] AS [Comments], 
+    [AdWordLeads].[Source] AS [Source], 
+    [AdWordLeads].[Gclid] AS [Gclid], 
+    [AdWordLeads].[QueryString] AS [QueryString], 
+    [AdWordLeads].[UrlReferer] AS [UrlReferer], 
+    [AdWordLeads].[PricingPlan] AS [PricingPlan], 
+    [AdWordLeads].[CompId] AS [CompId], 
+    [AdWordLeads].[Address] AS [Address], 
+    [AdWordLeads].[UpdatedAt] AS [UpdatedAt], 
+    [AdWordLeads].[Company] AS [Company], 
+    [AdWordLeads].[LeadStage] AS [LeadStage]
+    FROM [dbo].[AdWordLeads] AS [AdWordLeads]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="CompuageLogins" EntityType="Self.CompuageLogins" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CompuageLogins].[Id] AS [Id], 
+    [CompuageLogins].[CompuageId] AS [CompuageId], 
+    [CompuageLogins].[Password] AS [Password]
+    FROM [dbo].[CompuageLogins] AS [CompuageLogins]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="LeadStages" EntityType="Self.LeadStages" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [LeadStages].[Id] AS [Id], 
+    [LeadStages].[Stage] AS [Stage], 
+    [LeadStages].[isActive] AS [isActive]
+    FROM [dbo].[LeadStages] AS [LeadStages]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="Fk_RoleId_Compuages" Association="Self.Fk_RoleId_Compuages">
+      <End Role="CompuageRoles" EntitySet="CompuageRoles" />
+      <End Role="Compuages" EntitySet="Compuages" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

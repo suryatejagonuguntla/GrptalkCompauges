@@ -1,0 +1,103 @@
+
+<div class="page-header navbar navbar-fixed-top" style="height: 87px;">
+  <!-- BEGIN HEADER INNER -->
+  <div class="page-header-inner" style="width:100%">
+    <!-- BEGIN RESPONSIVE MENU TOGGLER -->
+    <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
+    </a>
+    <!-- END RESPONSIVE MENU TOGGLER -->
+    <!-- BEGIN LOGO -->
+    <div class="page-logo">
+      <a [routerLink]="['/AllLeads']">
+        <img src="../../assets/predefinded/images/grpLogo.png" alt="logo" class="logo-default" />
+
+      </a>
+      <div class="menu-toggler sidebar-toggler hide">
+        <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
+      </div>
+
+      <!-- END LOGO -->
+      <!-- BEGIN TOP NAVIGATION MENU -->
+      <!--<input type="button" value="profilepicture" (click)="open(imageUpload)" />-->
+      <div class="top-menu float-right pull-xs-right">
+
+        <div class="d-inline-block dropdown dropdown-user" style="left: -20px;top: -28px;" [ngClass]="{ 'show': isDropDownShow,  '': !isDropDownShow}" ngbdropdown="">
+
+          <a class="dropdown-toggle" id="dropdownBasic1" ngbdropdowntoggle="" (click)="ShowDropDown()" data-hover="dropdown" data-close-others="true">
+            <img alt="" class="img-circle" src="assets/admin/layout/img/avatar3_small.jpg" />
+            <span class="username username-hide-on-mobile">
+              Nick
+            </span>
+
+          </a>
+          <!--<button aria-haspopup="true" class="btn btn-outline-primary dropdown-toggle" id="dropdownBasic1" ngbdropdowntoggle="" aria-expanded="true">Toggle dropdown</button>-->
+          <div aria-labelledby="dropdownBasic1" ngbdropdownmenu="" class="dropdown-menu" [ngClass]="{ 'show': isDropDownShow,  '': !isDropDownShow}" class="dropdown-menu show" x-placement="bottom-left" style="position: absolute; top: -17px; left: -94px; transform: translate(0px, 37.2917px);">
+            <!--<a [routerLink]="['/home']" *ngIf="UserRole == '1' ">
+              All Users
+            </a>-->
+            <button class="dropdown-item" [routerLink]="['/home']" *ngIf="UserRole == '1' "> <i class="fa fa-users" style="margin-right:5px;"></i> All Users</button>
+            <!--<br />-->
+            <button class="dropdown-item" [routerLink]="['/AllLeads']"> <i class="fa fa-briefcase" style="margin-right:5px;"></i> All Leads</button>
+            <!--<a [routerLink]="['/AllLeads']">
+              All Leads
+            </a>-->
+            <button class="dropdown-item" (click)="open(imageUpload)"> <i class="fa fa-image" style="margin-right:5px;"></i> Change profile</button>
+            <button class="dropdown-item" (click)="logOut()"> <i class="fa fa-key" style="margin-right:5px;"></i> Log Out</button>
+          </div>
+        </div>
+
+        <!-- END USER LOGIN DROPDOWN -->
+        <!--</ul>-->
+      </div>
+      <!-- END TOP NAVIGATION MENU -->
+    </div>
+    <!-- END HEADER INNER -->
+  </div>
+</div>
+
+<ng-template #imageUpload let-modal="dismiss">
+
+  <div >
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel"> profile picture</h5>
+      <a class="pull-right" (click)="modal('Cross click')"><img style="padding-top: 15px;" src="../../assets/predefinded/images/cross_icn.png" /></a>
+    </div>
+    <div class="modal-body" style="height:500px;width:500px;">
+
+      <input type="file" (change)="fileChangeEvent($event)" />
+
+      <!--<image-cropper [imageChangedEvent]="imageChangedEvent"
+              [maintainAspectRatio]="true"
+              [aspectRatio]="1 / 1"
+              [resizeToWidth]="128"
+              format="png"
+              [roundCropper]="true"
+              (imageCropped)="imageCropped($event)"
+              (imageLoaded)="imageLoaded()"
+              (cropperReady)="cropperReady()"
+              (loadImageFailed)="loadImageFailed()">
+
+  </image-cropper>-->
+      <image-cropper [imageChangedEvent]="imageChangedEvent"
+                     [maintainAspectRatio]="true"
+              [aspectRatio]="1 / 1"
+              [resizeToWidth]="128"
+              format="png"
+              outputType="base64"
+              [roundCropper]="false"
+              (imageCropped)="imageCropped($event)"
+              (imageLoaded)="imageLoaded()"
+              (cropperReady)="cropperReady()"
+              (loadImageFailed)="loadImageFailed()"></image-cropper>
+
+      <img [src]="croppedImage" (change)="handleFileSelect($event)"  style="border-radius: 100%;" />
+    </div>
+    <div class="modal-footer">
+
+      <button type="button" class="btn btn-danger" (click)="uploadImage()">Save changes</button>
+    </div>
+
+  </div>
+</ng-template>
+
+

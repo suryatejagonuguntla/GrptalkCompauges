@@ -1,0 +1,562 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="GTStagingNewModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'GTStagingNew.dbo.AdWordLeads' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="AdWordLeads">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Mobile" Type="varchar" MaxLength="20" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Type" Type="tinyint" />
+          <Property Name="InsertedAt" Type="datetime" />
+          <Property Name="LeadType" Type="tinyint" />
+          <Property Name="IsAssigned" Type="tinyint" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Comments" Type="nvarchar" MaxLength="500" />
+          <Property Name="Source" Type="varchar" MaxLength="50" />
+          <Property Name="Gclid" Type="varchar" MaxLength="100" />
+          <Property Name="QueryString" Type="varchar" MaxLength="2500" />
+          <Property Name="UrlReferer" Type="nvarchar" MaxLength="2000" />
+          <Property Name="PricingPlan" Type="varchar" MaxLength="100" />
+          <Property Name="CompId" Type="int" />
+          <Property Name="Address" Type="varchar" MaxLength="2000" />
+          <Property Name="UpdatedAt" Type="datetime" />
+          <Property Name="Company" Type="varchar" MaxLength="300" />
+          <Property Name="LeadStage" Type="tinyint" />
+          <Property Name="isActive" Type="bit" />
+          <Property Name="LeadName" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'GTStagingNew.dbo.CompuageLogins' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CompuageLogins">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="CompuageId" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompuageId" Type="int" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="256" />
+        </EntityType>
+        <EntityType Name="CompuageRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Role" Type="varchar" MaxLength="25" />
+          <Property Name="IsActive" Type="tinyint" />
+          <Property Name="CreatedTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Compuages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="Mobile" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="RoleId" Type="tinyint" />
+          <Property Name="IsActive" Type="tinyint" />
+          <Property Name="CreatedBy" Type="tinyint" />
+          <Property Name="CreatedTime" Type="datetime" />
+          <Property Name="UpdatedTime" Type="datetime" />
+          <Property Name="CipherKey" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'GTStagingNew.dbo.CompuageUserDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CompuageUserDetails">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompId" Type="int" />
+          <Property Name="ImageUrl" Type="varchar" MaxLength="2000" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'GTStagingNew.dbo.LeadStages' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="LeadStages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Stage" Type="varchar" MaxLength="200" />
+          <Property Name="isActive" Type="bit" />
+        </EntityType>
+        <Association Name="Fk_RoleId_Compuages">
+          <End Role="CompuageRoles" Type="Self.CompuageRoles" Multiplicity="0..1" />
+          <End Role="Compuages" Type="Self.Compuages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompuageRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Compuages">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="GetAllCompaugeUsers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="mode" Type="tinyint" Mode="In" />
+          <Parameter Name="fromDate" Type="varchar" Mode="In" />
+          <Parameter Name="toDate" Type="varchar" Mode="In" />
+          <Parameter Name="searchInput" Type="varchar" Mode="In" />
+          <Parameter Name="retVal" Type="tinyint" Mode="InOut" />
+          <Parameter Name="retMsg" Type="varchar" Mode="InOut" />
+        </Function>
+        <Function Name="ManageCompaugeLeads" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="mode" Type="tinyint" Mode="In" />
+          <Parameter Name="compId" Type="varchar" Mode="In" />
+          <Parameter Name="SearchInput" Type="nvarchar" Mode="In" />
+          <Parameter Name="Deals" Type="varchar" Mode="In" />
+          <Parameter Name="leadStages" Type="varchar" Mode="In" />
+          <Parameter Name="fromDate" Type="varchar" Mode="In" />
+          <Parameter Name="toDate" Type="varchar" Mode="In" />
+          <Parameter Name="resellerNames" Type="varchar" Mode="In" />
+          <Parameter Name="CompanyName" Type="varchar" Mode="In" />
+          <Parameter Name="ConatactName" Type="varchar" Mode="In" />
+          <Parameter Name="mobile" Type="varchar" Mode="In" />
+          <Parameter Name="email" Type="varchar" Mode="In" />
+          <Parameter Name="Address" Type="varchar" Mode="In" />
+          <Parameter Name="comments" Type="varchar" Mode="In" />
+          <Parameter Name="stageID" Type="int" Mode="In" />
+          <Parameter Name="leadName" Type="varchar" Mode="In" />
+          <Parameter Name="LeadId" Type="int" Mode="In" />
+          <Parameter Name="retVal" Type="tinyint" Mode="InOut" />
+          <Parameter Name="retMsg" Type="varchar" Mode="InOut" />
+        </Function>
+        <Function Name="ManageCompaugeUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="mode" Type="tinyint" Mode="In" />
+          <Parameter Name="compId" Type="int" Mode="In" />
+          <Parameter Name="username" Type="varchar" Mode="In" />
+          <Parameter Name="password" Type="varchar" Mode="In" />
+          <Parameter Name="confirmPassword" Type="varchar" Mode="In" />
+          <Parameter Name="CipherKey" Type="varchar" Mode="In" />
+          <Parameter Name="Name" Type="varchar" Mode="In" />
+          <Parameter Name="Mobile" Type="varchar" Mode="In" />
+          <Parameter Name="Email" Type="varchar" Mode="In" />
+          <Parameter Name="createdby" Type="int" Mode="In" />
+          <Parameter Name="roleId" Type="tinyint" Mode="In" />
+          <Parameter Name="retVal" Type="tinyint" Mode="InOut" />
+          <Parameter Name="retMsg" Type="varchar" Mode="InOut" />
+        </Function>
+        <EntityContainer Name="GTStagingNewModelStoreContainer">
+          <EntitySet Name="CompuageRoles" EntityType="Self.CompuageRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Compuages" EntityType="Self.Compuages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AdWordLeads" EntityType="Self.AdWordLeads" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [AdWordLeads].[Id] AS [Id], 
+    [AdWordLeads].[Mobile] AS [Mobile], 
+    [AdWordLeads].[Email] AS [Email], 
+    [AdWordLeads].[Type] AS [Type], 
+    [AdWordLeads].[InsertedAt] AS [InsertedAt], 
+    [AdWordLeads].[LeadType] AS [LeadType], 
+    [AdWordLeads].[IsAssigned] AS [IsAssigned], 
+    [AdWordLeads].[FullName] AS [FullName], 
+    [AdWordLeads].[Comments] AS [Comments], 
+    [AdWordLeads].[Source] AS [Source], 
+    [AdWordLeads].[Gclid] AS [Gclid], 
+    [AdWordLeads].[QueryString] AS [QueryString], 
+    [AdWordLeads].[UrlReferer] AS [UrlReferer], 
+    [AdWordLeads].[PricingPlan] AS [PricingPlan], 
+    [AdWordLeads].[CompId] AS [CompId], 
+    [AdWordLeads].[Address] AS [Address], 
+    [AdWordLeads].[UpdatedAt] AS [UpdatedAt], 
+    [AdWordLeads].[Company] AS [Company], 
+    [AdWordLeads].[LeadStage] AS [LeadStage], 
+    [AdWordLeads].[isActive] AS [isActive], 
+    [AdWordLeads].[LeadName] AS [LeadName]
+    FROM [dbo].[AdWordLeads] AS [AdWordLeads]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="CompuageLogins" EntityType="Self.CompuageLogins" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [CompuageLogins].[Id] AS [Id], 
+    [CompuageLogins].[CompuageId] AS [CompuageId], 
+    [CompuageLogins].[Password] AS [Password]
+    FROM [dbo].[CompuageLogins] AS [CompuageLogins]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="CompuageUserDetails" EntityType="Self.CompuageUserDetails" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [CompuageUserDetails].[id] AS [id], 
+    [CompuageUserDetails].[CompId] AS [CompId], 
+    [CompuageUserDetails].[ImageUrl] AS [ImageUrl]
+    FROM [dbo].[CompuageUserDetails] AS [CompuageUserDetails]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="LeadStages" EntityType="Self.LeadStages" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [LeadStages].[Id] AS [Id], 
+    [LeadStages].[Stage] AS [Stage], 
+    [LeadStages].[isActive] AS [isActive]
+    FROM [dbo].[LeadStages] AS [LeadStages]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="Fk_RoleId_Compuages" Association="Self.Fk_RoleId_Compuages">
+            <End Role="CompuageRoles" EntitySet="CompuageRoles" />
+            <End Role="Compuages" EntitySet="Compuages" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GTStagingNewModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CompuageRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Role" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Byte" />
+          <Property Name="CreatedTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Compuages" Relationship="Self.Fk_RoleId_Compuages" FromRole="CompuageRoles" ToRole="Compuages" />
+        </EntityType>
+        <EntityType Name="Compuage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Mobile" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RoleId" Type="Byte" />
+          <Property Name="IsActive" Type="Byte" />
+          <Property Name="CreatedBy" Type="Byte" />
+          <Property Name="CreatedTime" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CompuageRole" Relationship="Self.Fk_RoleId_Compuages" FromRole="Compuages" ToRole="CompuageRoles" />
+          <Property Name="CipherKey" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CompuageLogin">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="CompuageId" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompuageId" Type="Int32" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="Fk_RoleId_Compuages">
+          <End Role="CompuageRoles" Type="Self.CompuageRole" Multiplicity="0..1" />
+          <End Role="Compuages" Type="Self.Compuage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompuageRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Compuages">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GTStagingNewEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CompuageRoles" EntityType="Self.CompuageRole" />
+          <EntitySet Name="Compuages" EntityType="Self.Compuage" />
+          <EntitySet Name="CompuageLogins" EntityType="Self.CompuageLogin" />
+          <AssociationSet Name="Fk_RoleId_Compuages" Association="Self.Fk_RoleId_Compuages">
+            <End Role="CompuageRoles" EntitySet="CompuageRoles" />
+            <End Role="Compuages" EntitySet="Compuages" />
+          </AssociationSet>
+          <FunctionImport Name="GetAllCompaugeUsers" ReturnType="Collection(GTStagingNewModel.GetAllCompaugeUsers_Result)">
+            <Parameter Name="mode" Mode="In" Type="Byte" />
+            <Parameter Name="fromDate" Mode="In" Type="String" />
+            <Parameter Name="toDate" Mode="In" Type="String" />
+            <Parameter Name="searchInput" Mode="In" Type="String" />
+            <Parameter Name="retVal" Mode="InOut" Type="Byte" />
+            <Parameter Name="retMsg" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="compaugeUsers" ReturnType="Collection(GTStagingNewModel.GetAllCompaugeUsers_Result)">
+            <Parameter Name="mode" Mode="In" Type="Byte" />
+            <Parameter Name="fromDate" Mode="In" Type="String" />
+            <Parameter Name="toDate" Mode="In" Type="String" />
+            <Parameter Name="searchInput" Mode="In" Type="String" />
+            <Parameter Name="retVal" Mode="InOut" Type="Byte" />
+            <Parameter Name="retMsg" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ManageCompaugeUser">
+            <Parameter Name="mode" Mode="In" Type="Byte" />
+            <Parameter Name="compId" Mode="In" Type="Int32" />
+            <Parameter Name="username" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
+            <Parameter Name="confirmPassword" Mode="In" Type="String" />
+            <Parameter Name="CipherKey" Mode="In" Type="String" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="Mobile" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="createdby" Mode="In" Type="Int32" />
+            <Parameter Name="roleId" Mode="In" Type="Byte" />
+            <Parameter Name="retVal" Mode="InOut" Type="Byte" />
+            <Parameter Name="retMsg" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ManageCompUser">
+            <Parameter Name="mode" Mode="In" Type="Byte" />
+            <Parameter Name="compId" Mode="In" Type="Int32" />
+            <Parameter Name="username" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
+            <Parameter Name="confirmPassword" Mode="In" Type="String" />
+            <Parameter Name="CipherKey" Mode="In" Type="String" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="Mobile" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="createdby" Mode="In" Type="Int32" />
+            <Parameter Name="roleId" Mode="In" Type="Byte" />
+            <Parameter Name="retVal" Mode="InOut" Type="Byte" />
+            <Parameter Name="retMsg" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="AdWordLeads" EntityType="GTStagingNewModel.AdWordLead" />
+          <EntitySet Name="LeadStages" EntityType="GTStagingNewModel.LeadStage" />
+          <FunctionImport Name="ManageCompaugeLeads" ReturnType="Collection(GTStagingNewModel.ManageCompaugeLeads_Result)">
+            <Parameter Name="mode" Mode="In" Type="Byte" />
+            <Parameter Name="compId" Mode="In" Type="String" />
+            <Parameter Name="SearchInput" Mode="In" Type="String" />
+            <Parameter Name="Deals" Mode="In" Type="String" />
+            <Parameter Name="leadStages" Mode="In" Type="String" />
+            <Parameter Name="fromDate" Mode="In" Type="String" />
+            <Parameter Name="toDate" Mode="In" Type="String" />
+            <Parameter Name="resellerNames" Mode="In" Type="String" />
+            <Parameter Name="CompanyName" Mode="In" Type="String" />
+            <Parameter Name="ConatactName" Mode="In" Type="String" />
+            <Parameter Name="mobile" Mode="In" Type="String" />
+            <Parameter Name="email" Mode="In" Type="String" />
+            <Parameter Name="Address" Mode="In" Type="String" />
+            <Parameter Name="comments" Mode="In" Type="String" />
+            <Parameter Name="stageID" Mode="In" Type="Int32" />
+            <Parameter Name="leadName" Mode="In" Type="String" />
+            <Parameter Name="LeadId" Mode="In" Type="Int32" />
+            <Parameter Name="retVal" Mode="InOut" Type="Byte" />
+            <Parameter Name="retMsg" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="CompuageUserDetails" EntityType="GTStagingNewModel.CompuageUserDetail" />
+        </EntityContainer>
+        <ComplexType Name="GetAllCompaugeUsers_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="64" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="256" />
+          <Property Type="String" Name="Mobile" Nullable="false" MaxLength="15" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="64" />
+          <Property Type="String" Name="Password" Nullable="false" MaxLength="256" />
+          <Property Type="Byte" Name="RoleId" Nullable="true" />
+          <Property Type="Byte" Name="IsActive" Nullable="true" />
+          <Property Type="Byte" Name="CreatedBy" Nullable="true" />
+          <Property Type="DateTime" Name="CreatedTime" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="UpdatedTime" Nullable="true" Precision="23" />
+        </ComplexType>
+        <EntityType Name="AdWordLead">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Mobile" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Type" Type="Byte" />
+          <Property Name="InsertedAt" Type="DateTime" Precision="3" />
+          <Property Name="LeadType" Type="Byte" />
+          <Property Name="IsAssigned" Type="Byte" />
+          <Property Name="FullName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Comments" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Source" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Gclid" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="QueryString" Type="String" MaxLength="2500" FixedLength="false" Unicode="false" />
+          <Property Name="UrlReferer" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="PricingPlan" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CompId" Type="Int32" />
+          <Property Name="Address" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
+          <Property Name="Company" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="LeadStage" Type="Byte" />
+          <Property Name="isActive" Type="Boolean" />
+          <Property Name="LeadName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="LeadStage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Stage" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="isActive" Type="Boolean" />
+        </EntityType>
+        <ComplexType Name="ManageCompaugeLeads_Result">
+          <Property Type="String" Name="FullName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Company" Nullable="true" MaxLength="300" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Mobile" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Comments" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="2000" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="64" />
+          <Property Type="String" Name="Stage" Nullable="true" MaxLength="200" />
+        </ComplexType>
+        <EntityType Name="CompuageUserDetail">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompId" Type="Int32" />
+          <Property Name="ImageUrl" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GTStagingNewModelStoreContainer" CdmEntityContainer="GTStagingNewEntities">
+          <EntitySetMapping Name="CompuageRoles">
+            <EntityTypeMapping TypeName="GTStagingNewModel.CompuageRole">
+              <MappingFragment StoreEntitySet="CompuageRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Compuages">
+            <EntityTypeMapping TypeName="GTStagingNewModel.Compuage">
+              <MappingFragment StoreEntitySet="Compuages">
+                <ScalarProperty Name="CipherKey" ColumnName="CipherKey" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+                <ScalarProperty Name="UpdatedTime" ColumnName="UpdatedTime" />
+                <Condition ColumnName="Password" IsNull="false" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CompuageLogins">
+            <EntityTypeMapping TypeName="GTStagingNewModel.CompuageLogin">
+              <MappingFragment StoreEntitySet="CompuageLogins">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CompuageId" ColumnName="CompuageId" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetAllCompaugeUsers" FunctionName="GTStagingNewModel.Store.GetAllCompaugeUsers">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GTStagingNewModel.GetAllCompaugeUsers_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+                <ScalarProperty Name="UpdatedTime" ColumnName="UpdatedTime" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="compaugeUsers" FunctionName="GTStagingNewModel.Store.GetAllCompaugeUsers">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GTStagingNewModel.GetAllCompaugeUsers_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+                <ScalarProperty Name="UpdatedTime" ColumnName="UpdatedTime" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ManageCompaugeUser" FunctionName="GTStagingNewModel.Store.ManageCompaugeUser" />
+          <FunctionImportMapping FunctionImportName="ManageCompUser" FunctionName="GTStagingNewModel.Store.ManageCompaugeUser" />
+          <EntitySetMapping Name="AdWordLeads">
+            <EntityTypeMapping TypeName="GTStagingNewModel.AdWordLead">
+              <MappingFragment StoreEntitySet="AdWordLeads">
+                <ScalarProperty Name="LeadName" ColumnName="LeadName" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="LeadStage" ColumnName="LeadStage" />
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="CompId" ColumnName="CompId" />
+                <ScalarProperty Name="PricingPlan" ColumnName="PricingPlan" />
+                <ScalarProperty Name="UrlReferer" ColumnName="UrlReferer" />
+                <ScalarProperty Name="QueryString" ColumnName="QueryString" />
+                <ScalarProperty Name="Gclid" ColumnName="Gclid" />
+                <ScalarProperty Name="Source" ColumnName="Source" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="IsAssigned" ColumnName="IsAssigned" />
+                <ScalarProperty Name="LeadType" ColumnName="LeadType" />
+                <ScalarProperty Name="InsertedAt" ColumnName="InsertedAt" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LeadStages">
+            <EntityTypeMapping TypeName="GTStagingNewModel.LeadStage">
+              <MappingFragment StoreEntitySet="LeadStages">
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="Stage" ColumnName="Stage" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ManageCompaugeLeads" FunctionName="GTStagingNewModel.Store.ManageCompaugeLeads">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GTStagingNewModel.ManageCompaugeLeads_Result">
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Stage" ColumnName="Stage" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="CompuageUserDetails">
+            <EntityTypeMapping TypeName="GTStagingNewModel.CompuageUserDetail">
+              <MappingFragment StoreEntitySet="CompuageUserDetails">
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="CompId" ColumnName="CompId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="GTStagingNewModelStoreContainer" CdmEntityContainer="GTStagingNewEntities">
+    <EntitySetMapping Name="CompuageRoles">
+      <EntityTypeMapping TypeName="GTStagingNewModel.CompuageRole">
+        <MappingFragment StoreEntitySet="CompuageRoles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Compuages">
+      <EntityTypeMapping TypeName="GTStagingNewModel.Compuage">
+        <MappingFragment StoreEntitySet="Compuages">
+          <ScalarProperty Name="CipherKey" ColumnName="CipherKey" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+          <ScalarProperty Name="UpdatedTime" ColumnName="UpdatedTime" />
+          <Condition ColumnName="Password" IsNull="false" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CompuageLogins">
+      <EntityTypeMapping TypeName="GTStagingNewModel.CompuageLogin">
+        <MappingFragment StoreEntitySet="CompuageLogins">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CompuageId" ColumnName="CompuageId" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="GetAllCompaugeUsers" FunctionName="GTStagingNewModel.Store.GetAllCompaugeUsers">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GTStagingNewModel.GetAllCompaugeUsers_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+          <ScalarProperty Name="UpdatedTime" ColumnName="UpdatedTime" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="compaugeUsers" FunctionName="GTStagingNewModel.Store.GetAllCompaugeUsers">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GTStagingNewModel.GetAllCompaugeUsers_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+          <ScalarProperty Name="UpdatedTime" ColumnName="UpdatedTime" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ManageCompaugeUser" FunctionName="GTStagingNewModel.Store.ManageCompaugeUser" />
+    <FunctionImportMapping FunctionImportName="ManageCompUser" FunctionName="GTStagingNewModel.Store.ManageCompaugeUser" />
+    <EntitySetMapping Name="AdWordLeads">
+      <EntityTypeMapping TypeName="GTStagingNewModel.AdWordLead">
+        <MappingFragment StoreEntitySet="AdWordLeads">
+          <ScalarProperty Name="LeadName" ColumnName="LeadName" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="LeadStage" ColumnName="LeadStage" />
+          <ScalarProperty Name="Company" ColumnName="Company" />
+          <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="CompId" ColumnName="CompId" />
+          <ScalarProperty Name="PricingPlan" ColumnName="PricingPlan" />
+          <ScalarProperty Name="UrlReferer" ColumnName="UrlReferer" />
+          <ScalarProperty Name="QueryString" ColumnName="QueryString" />
+          <ScalarProperty Name="Gclid" ColumnName="Gclid" />
+          <ScalarProperty Name="Source" ColumnName="Source" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="IsAssigned" ColumnName="IsAssigned" />
+          <ScalarProperty Name="LeadType" ColumnName="LeadType" />
+          <ScalarProperty Name="InsertedAt" ColumnName="InsertedAt" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LeadStages">
+      <EntityTypeMapping TypeName="GTStagingNewModel.LeadStage">
+        <MappingFragment StoreEntitySet="LeadStages">
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="Stage" ColumnName="Stage" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="ManageCompaugeLeads" FunctionName="GTStagingNewModel.Store.ManageCompaugeLeads">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GTStagingNewModel.ManageCompaugeLeads_Result">
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="Company" ColumnName="Company" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Stage" ColumnName="Stage" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="CompuageUserDetails">
+      <EntityTypeMapping TypeName="GTStagingNewModel.CompuageUserDetail">
+        <MappingFragment StoreEntitySet="CompuageUserDetails">
+          <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+          <ScalarProperty Name="CompId" ColumnName="CompId" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

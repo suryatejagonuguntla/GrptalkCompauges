@@ -1,0 +1,16 @@
+.loginbg {
+  background: url(../../assets/predefinded/images/loginBg.png)no-repeat !important;
+  background-size: cover !important;
+  height: 100% !important;
+}
+	.loginbox{background: #fff; border-radius: 8px !important; padding: 20px; margin-top: 30%}
+	.loginbox label{color: #8d97a1; font-size: 13px; font-weight: 600}
+	.loginbox input{background-color: #f9f9f9; border-radius: 4px !important; border:none}
+	.btn-login {background: linear-gradient(to right, #fbd753 , #e67433); color: #fff; border:none; padding: 8px 20px; border-radius: 4px !important}
+	.loginbox .form-group{margin-bottom: 25px}
+	.btn-login:active, .btn-login:focus, .btn-login:hover{color:#fff}
+
+
+.showPassword {
+  display: 
+}

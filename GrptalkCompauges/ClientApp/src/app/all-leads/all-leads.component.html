@@ -1,0 +1,401 @@
+<app-header></app-header>
+<div class="clearfix">
+</div>
+<!-- BEGIN CONTAINER -->
+<div class="page-container">
+
+  <!-- BEGIN CONTENT -->
+
+  <div class="page-content">
+    <div class="container margin-top-40">
+      <div class="row margin-top-30 margin-bottom-20">
+
+        <div class="col-sm-6 col-md-3">
+          <div class="db_box">
+            <h5>Total Leads Created</h5>
+            <h3>{{LeadSummary.totalLeadsCreated}}</h3>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-md-3">
+          <div class="db_box">
+            <h5>Business Demo</h5>
+            <h3>{{LeadSummary.businessDemo}}</h3>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-md-3">
+          <div class="db_box">
+            <h5>Business Leads</h5>
+            <h3>{{LeadSummary.businessLeads}}</h3>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-md-3">
+          <div class="db_box">
+            <h5>Not Satisfied Leads</h5>
+            <h3>{{LeadSummary.notSatisfiedLeads}}</h3>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="stu_srch_box">
+        <div class="clearfix srch_top row">
+          <div class="col-sm-2 col-md-2 col-xs-2 left-srch">
+            <label id="filter" class="filt_btn mb-0" [ngClass]="{'select': !isFiltersShow}" (click)="toogleFilter()">
+              <i class="fa fa-sliders margin-right-10"></i>
+              <span class="hidden-xs">Filters</span>
+            </label>
+          </div>
+          <div class="col-sm-7 col-md-7 col-xs-10 mid-srch">
+            <!--<input type="text" class="form-control"  placeholder="Search">-->
+            <input type="text" #leadSearch (keyup.enter)="leadSearchData(leadSearch.value)" [(ngModel)]="leadSearchInput" class="form-control" placeholder="Search">
+          </div>
+          <div class="col-sm-3 col-md-3 right-srch">
+            <a class="text-red" id="ad_student" (click)="open(addLead)"><i class="fa fa-plus-circle margin-right-10 margin-top-10"></i> Add Lead</a>
+          </div>
+        </div>
+        <div class="sbContainer">
+          <div class="sidebar bord-right" [ngClass]="{'collapsed': isFiltersShow}" id="sidebar">
+            <!--<div class="clearfix padBox bord-b">
+              <label class="pull-left f_15 bold-6">All Deals</label>
+              <label class="pull-right indicator" (click)="isAllDealsCollapsed = !isAllDealsCollapsed" [ngClass]="{'collapsed': isAllDealsShow}" data-toggle="collapse" data-target="#deal"><i class="fa fa-plus-square-o"></i></label>
+              <div class="clearfix"></div>
+              <ul id="deal" [ngbCollapse]="isAllDealsCollapsed"  class="collapse show margin-top-10">
+                <li><input type="checkbox" class="margin-right-5" /> abcd</li>
+                <li><input type="checkbox" class="margin-right-5" /> abcd</li>
+                <li><input type="checkbox" class="margin-right-5" /> abcd</li>
+                <li><input type="checkbox" class="margin-right-5" /> abcd</li>
+              </ul>
+            </div>-->
+            <div class="clearfix padBox bord-b">
+              <label class="pull-left f_15 bold-6">Lead Stage</label>
+              <label class="pull-right indicator" (click)="isLeadStageCollapsed = !isLeadStageCollapsed" [ngClass]="{'collapsed': isLeadShow}" data-toggle="collapse" data-target="#stage"><i class="fa fa-minus-square-o"></i></label>
+              <div class="clearfix"></div>
+              <ul id="stage" [ngbCollapse]="isLeadStageCollapsed" class="collapse show margin-top-10">
+                <li>
+                  <ng-select [items]="LeadStages | async"
+                             [multiple]="true"
+                             [closeOnSelect]="false"
+                             [searchable]="true"
+                             bindLabel="stage"
+                             placeholder="Lead Stage"
+                             (close) ="leadSelected()"
+                             (remove) ="leadSelected()"
+                             (clear)="leadSelected()"
+                             [(ngModel)]="selectedLeads">
+                  </ng-select>
+                  <div class="mt-3">
+                    Selected Leads: <br />
+                    <ul>
+                      <li *ngFor="let item of selectedLeads">{{item.name}}</li>
+                    </ul>
+                    
+                  </div>
+                </li>
+                
+              </ul>
+            </div>
+            <div class="clearfix padBox bord-b">
+              <label class="pull-left f_15 bold-6">Date</label>
+              <label class="pull-right indicator" (click)="isDateCollapsed = !isDateCollapsed" [ngClass]="{'collapsed': isDateShow}" data-toggle="collapse" data-target="#date"><i class="fa fa-plus-square-o"></i></label>
+              <div class="clearfix"></div>
+              <ul id="date" [ngbCollapse]="isDateCollapsed" class="collapse show margin-top-10">
+                <li>
+                  <input type="checkbox" [(ngModel)]="dateCBoxes.LDayChecked" [ngModelOptions]="{standalone: true}" (click)="selectedDate('LDayChecked' , dateCBoxes.LDayChecked)" /> Last Day
+                </li>
+                <li>
+                  <input type="checkbox" [(ngModel)]="dateCBoxes.LWeekChecked" [ngModelOptions]="{standalone: true}" (click)="selectedDate('LWeekChecked' , dateCBoxes.LWeekChecked)" /> Last Week
+                </li>
+                <li>
+                  <input type="checkbox" [(ngModel)]="dateCBoxes.LMonthChecked" [ngModelOptions]="{standalone: true}" (click)="selectedDate('LMonthChecked' ,  dateCBoxes.LMonthChecked)" /> Last Month
+                </li>
+                <li>
+                  <input type="checkbox" [(ngModel)]="dateCBoxes.CustomDate" [ngModelOptions]="{standalone: true}" (click)="selectedDate('CustomDate' ,  dateCBoxes.CustomDate)" /> Custom Date
+
+                  <div class="form-group margin-top-15">
+                    <label class="text-lite-grey f_12">From Date</label>
+                    <div class="input-group full-w">
+                      <div class="input-icon right">
+                        <i class="fa fa-calendar-o text-red btn btn-outline-secondary calendar" (click)="fd.toggle()"></i>
+                        <input type="text" [(ngModel)]="fromDate" (ngModelChange)="customDateSearch(fromDate , 'fromDate')" ngbDatepicker #fd="ngbDatepicker" (click)="fd.toggle()" class="form-control">
+                       
+                        <ng-template #itemTemplateApi let-item>
+                          <a [innerHTML]="item"></a>
+                        </ng-template>
+
+                        <ng-template #notFoundTemplate let-notFound>
+                          <div [innerHTML]="notFound"></div>
+                        </ng-template>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="text-lite-grey f_12">To Date</label>
+                    <div class="input-group full-w">
+                      <div class="input-icon right">
+                        <i class="fa fa-calendar-o text-red btn btn-outline-secondary calendar" (click)="td.toggle()"></i>
+                        <input type="text" [(ngModel)]="toDate" (ngModelChange)="customDateSearch(toDate , 'toDate')" ngbDatepicker #td="ngbDatepicker" (click)="td.toggle()" class="form-control">
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <div class="clearfix padBox bord-b">
+              <label class="pull-left f_15 bold-6">Reseller Names</label>
+              <label class="pull-right indicator" (click)="isRsNamesCollapsed = !isRsNamesCollapsed " [ngClass]="{'collapsed': isResellerShow}" data-toggle="collapse" data-target="#reseller"><i class="fa fa-plus-square-o"></i></label>
+              <div class="clearfix"></div>
+              <ul id="reseller" [ngbCollapse]="isRsNamesCollapsed" class="collapse show margin-top-10">
+                <li>
+                  <ng-select [items]="Resellers | async"
+                             [multiple]="true"
+                             [closeOnSelect]="false"
+                             [searchable]="true"
+                             bindLabel="name"
+                             (close) ="resellerSelected()"
+                              (remove) ="resellerSelected()"
+                             (clear)="resellerSelected()"
+                             placeholder="Select ReSeller"
+                             [(ngModel)]="selectedResellers">
+                  </ng-select>
+                  <div class="mt-3">
+                    Selected value: <br />
+                    <ul>
+                      <li *ngFor="let item of selectedResellers">{{item.name}}</li>
+                    </ul>
+                    
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+          <div id="sbContent" [ngClass]="{   'full-w': isFiltersShow,  'sbContent': !isFiltersShow}">
+            <table class="table table-borderd tblStudent">
+              <thead>
+                <tr>
+                  <th><input type="checkbox" /></th>
+                  <th>Lead Name</th>
+                  <th>Sales Executive</th>
+                  <th>Lead Stage</th>
+                  <th>Customer Name</th>
+                  <th>Company Name</th>
+                  <th>Contact</th>
+                  <th>Email</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+
+                <!--<tr>
+                  <td class=""><input type="checkbox" /></td>
+                  <td><a class="text-red" (click)="detailsBar()">Grptalk On Premises</a></td>
+                  <td>Lead In</td>
+                  <td>Samiksha Gupta</td>
+                  <td>XYZ Company</td>
+                  <td>6 Dec 2017</td>
+                  <td>xyz@xyz.com</td>
+                  <td>
+                    <span class="fa fa-edit text-red margin-right-10" title="Edit"></span>
+                    <span class="fa fa-trash text-red" title="Delete"></span>
+                  </td>
+                </tr>-->
+                <tr *ngFor="let lead of Leads">
+
+
+                  <!--<td class=""><input type="checkbox" /></td>
+                  <td><a class="text-red" [(ngModel)]="user.isChecked" [ngModelOptions]="{standalone: true}"  (click)="detailsBar()">Grptalk On Premises</a></td>
+                  <td>Lead In</td>
+                  <td>Samiksha Gupta</td>
+                  <td>XYZ Company</td>
+                  <td>6 Dec 2017</td>
+                  <td>xyz@xyz.com</td>
+                  <td>
+                    <span class="fa fa-edit text-red margin-right-10" title="Edit"></span>
+                    <span class="fa fa-trash text-red" title="Delete"></span>
+                  </td>-->
+                  <td class=""><input type="checkbox" [(ngModel)]="lead.isChecked" [ngModelOptions]="{standalone: true}" (click)="selectedRow(lead.isChecked)" /></td>
+                  <td> <a class="text-red" (click)="detailsBar(lead)"> {{lead.leadIn}} </a></td>
+                  <td>{{lead.leadIn}}</td>
+                  <td>{{lead.stage}}</td>
+                  <td>{{lead.fullName}}</td>
+                  <td>{{lead.company}}</td>
+                  <td>{{lead.mobile}}</td>
+                  <td>{{lead.email}}</td>
+                  <td>
+                    
+                    <a><span class="fa fa-trash text-red" title="Delete" (click)="delete(lead)"></span></a>
+                  </td>
+
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- END CONTENT -->
+
+</div>
+<!-- END CONTAINER -->
+<!-- BEGIN FOOTER -->
+<!-- END FOOTER -->
+<ng-template #addLead let-modal="dismiss">
+  <div class="modal-header">
+    <div class="add-student clearfix" style="width:100%;">
+      <h4 class="bold-6 pull-left text-red">Add Lead</h4>
+      <a class="pull-right" (click)="modal('Cross click')"><img src="../../assets/predefinded/images/cross_icn.png" alt="" /></a>
+    </div>
+  </div>
+  <div class="modal-body pad-0 add_lead_pop">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label>Lead Name</label>
+          <input type="text" [(ngModel)] ="LeadAdd.leadIn" class="form-control" />
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label>Lead Stage</label>
+          <br/>
+          <select [(ngModel)]="LeadAdd.stageId">
+            <option value="0"> Select Stage </option>
+            <option value="1"> Business</option>
+            <option value="2"> Business Demo</option>
+            <option value="3"> Not Satisfied</option>
+            <option value="4"> Contact Mode</option>
+            <option value="5"> Demo Scheduled</option>
+            <option value="6"> Negotiation</option>
+            <option value="7"> Contract Sent</option>
+          </select>
+
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label>Created Date</label>
+          <div class="input-group full-w">
+            <div class="input-icon right">
+              <i class="fa fa-calendar-o text-red btn btn-outline-secondary calendar" (click)="CdLead.toggle()"></i>
+              <input type="text" [(ngModel)]="LeadAdd.CreatedAt" ngbDatepicker #CdLead="ngbDatepicker" (click)="CdLead.toggle()" class="form-control">
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label>Customer Name</label>
+          <input type="text" [(ngModel)] ="LeadAdd.fullName" class="form-control" />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label>Customer Email</label>
+          <input type="text" [(ngModel)] ="LeadAdd.email" class="form-control" />
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label>Contact</label>
+          <input type="text" [(ngModel)] ="LeadAdd.mobile" class="form-control" />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label>Company Name</label>
+          <input type="text" [(ngModel)] ="LeadAdd.company"  class="form-control" />
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label>Address</label>
+          <textarea class="form-control" [(ngModel)] ="LeadAdd.address" rows="3"></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Comments</label>
+      <textarea class="form-control" [(ngModel)] ="LeadAdd.comments" rows="3"></textarea>
+    </div>
+  </div>
+
+  <div class="form-group text-center margin-bottom-30">
+    <button type="button" (click) ="AddLeads()" class="btn btn-red">Add Leads</button>
+  </div>
+
+</ng-template>
+
+  <div id="detailsPanel" [ngClass]="{ 'showDetails': isDetailsShow,  'hideDetails': !isDetailsShow}">
+    <div class="panel_header">
+      <img src="../../assets/predefinded/images/left_arrow.png" (click)="detailsBar(LeadEdit)" alt="" class="margin-right-10 pointer" />
+      Preview
+    </div>
+    <div class="panel_body">
+      <div class="panel_box">
+        <div class="clearfix margin-bottom-15">
+          <label class="f_15 pull-left">{{LeadEdit?.leadIn}}</label>
+          <label class="pull-right"><img src="../../assets/predefinded/images/Edit_icn.png" (click)="isShowLeadDropDown()" height="20" alt=""></label>
+        </div>
+        <ng-container *ngIf="!isShowLeadStageDropDown">
+
+          <label class="blocked f_12"><strong>Lead Stage :</strong>{{LeadEdit?.stage}}</label>
+         
+        </ng-container>
+        <!--<div *ngIf="isShowLeadStageDropDown">-->
+        <ng-container *ngIf="isShowLeadStageDropDown">
+          Lead Stage :
+          <select [(ngModel)]="selectedStage" >
+            <option value="0"> Select Stage </option>
+            <option value="1"> Business</option>
+            <option value="2"> Business Demo</option>
+            <option value="3"> Not Satisfied</option>
+            <option value="4"> Contact Mode</option>
+            <option value="5"> Demo Scheduled</option>
+            <option value="6"> Negotiation</option>
+            <option value="7"> Contract Sent</option>
+          </select>
+        </ng-container>
+          <!--</div>-->
+          <label class="blocked f_12"><strong>Created Date :</strong> 09/20/2018</label>
+      </div>
+      <div class="panel_box">
+        <h4 class="bold-6">{{LeadEdit?.address}}</h4>
+        <hr>
+        <div class="form-group">
+          <label class="f_12">Company Name</label>
+          <input type="text" class="form-control" [(ngModel)]="LeadEdit.company">
+        </div>
+        <div class="form-group">
+          <label class="f_12">Customer Name</label>
+          <input type="text" class="form-control" [(ngModel)]="LeadEdit.fullName">
+        </div>
+        <div class="form-group">
+          <label class="f_12">Customer Email</label>
+          <input type="text" class="form-control" [(ngModel)]="LeadEdit.email">
+        </div>
+        <div class="form-group">
+          <label class="f_12">Contact Number</label>
+          <input type="text" class="form-control" [(ngModel)]="LeadEdit.mobile">
+        </div>
+        <div class="form-group text-center">
+          <button type="button" class="btn btn-red" (click)="updateLeadDetails()">Update</button>
+        </div>
+      </div>
+    </div>
+  </div>

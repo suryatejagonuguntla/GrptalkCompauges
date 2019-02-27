@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GTStagingNewModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CompuageRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Role" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Byte" />
+    <Property Name="CreatedTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Compuages" Relationship="Self.Fk_RoleId_Compuages" FromRole="CompuageRoles" ToRole="Compuages" />
+  </EntityType>
+  <EntityType Name="Compuage">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Mobile" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="RoleId" Type="Byte" />
+    <Property Name="IsActive" Type="Byte" />
+    <Property Name="CreatedBy" Type="Byte" />
+    <Property Name="CreatedTime" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="CompuageRole" Relationship="Self.Fk_RoleId_Compuages" FromRole="Compuages" ToRole="CompuageRoles" />
+  </EntityType>
+  <EntityType Name="CompuageLogin">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="CompuageId" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CompuageId" Type="Int32" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="Fk_RoleId_Compuages">
+    <End Role="CompuageRoles" Type="Self.CompuageRole" Multiplicity="0..1" />
+    <End Role="Compuages" Type="Self.Compuage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CompuageRoles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Compuages">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="GTStagingNewEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CompuageRoles" EntityType="Self.CompuageRole" />
+    <EntitySet Name="Compuages" EntityType="Self.Compuage" />
+    <EntitySet Name="CompuageLogins" EntityType="Self.CompuageLogin" />
+    <AssociationSet Name="Fk_RoleId_Compuages" Association="Self.Fk_RoleId_Compuages">
+      <End Role="CompuageRoles" EntitySet="CompuageRoles" />
+      <End Role="Compuages" EntitySet="Compuages" />
+    </AssociationSet>
+    <FunctionImport Name="GetAllCompaugeUsers" ReturnType="Collection(GTStagingNewModel.GetAllCompaugeUsers_Result)">
+      <Parameter Name="mode" Mode="In" Type="Byte" />
+      <Parameter Name="fromDate" Mode="In" Type="String" />
+      <Parameter Name="toDate" Mode="In" Type="String" />
+      <Parameter Name="searchInput" Mode="In" Type="String" />
+      <Parameter Name="retVal" Mode="InOut" Type="Byte" />
+      <Parameter Name="retMsg" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="compaugeUsers" ReturnType="Collection(GTStagingNewModel.GetAllCompaugeUsers_Result)">
+      <Parameter Name="mode" Mode="In" Type="Byte" />
+      <Parameter Name="fromDate" Mode="In" Type="String" />
+      <Parameter Name="toDate" Mode="In" Type="String" />
+      <Parameter Name="searchInput" Mode="In" Type="String" />
+      <Parameter Name="retVal" Mode="InOut" Type="Byte" />
+      <Parameter Name="retMsg" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ManageCompaugeUser">
+      <Parameter Name="mode" Mode="In" Type="Byte" />
+      <Parameter Name="compId" Mode="In" Type="Int32" />
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="password" Mode="In" Type="String" />
+      <Parameter Name="confirmPassword" Mode="In" Type="String" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="Mobile" Mode="In" Type="String" />
+      <Parameter Name="Email" Mode="In" Type="String" />
+      <Parameter Name="createdby" Mode="In" Type="Int32" />
+      <Parameter Name="roleId" Mode="In" Type="Byte" />
+      <Parameter Name="retVal" Mode="InOut" Type="Byte" />
+      <Parameter Name="retMsg" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ManageCompUser">
+      <Parameter Name="mode" Mode="In" Type="Byte" />
+      <Parameter Name="compId" Mode="In" Type="Int32" />
+      <Parameter Name="username" Mode="In" Type="String" />
+      <Parameter Name="password" Mode="In" Type="String" />
+      <Parameter Name="confirmPassword" Mode="In" Type="String" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="Mobile" Mode="In" Type="String" />
+      <Parameter Name="Email" Mode="In" Type="String" />
+      <Parameter Name="createdby" Mode="In" Type="Int32" />
+      <Parameter Name="roleId" Mode="In" Type="Byte" />
+      <Parameter Name="retVal" Mode="InOut" Type="Byte" />
+      <Parameter Name="retMsg" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="AdWordLeads" EntityType="GTStagingNewModel.AdWordLead" />
+    <EntitySet Name="LeadStages" EntityType="GTStagingNewModel.LeadStage" />
+    <FunctionImport Name="ManageCompaugeLeads" ReturnType="Collection(GTStagingNewModel.ManageCompaugeLeads_Result)">
+      <Parameter Name="SearchInput" Mode="In" Type="String" />
+      <Parameter Name="Deals" Mode="In" Type="String" />
+      <Parameter Name="leadStages" Mode="In" Type="String" />
+      <Parameter Name="fromDate" Mode="In" Type="String" />
+      <Parameter Name="toDate" Mode="In" Type="String" />
+      <Parameter Name="resellerNames" Mode="In" Type="String" />
+      <Parameter Name="retVal" Mode="InOut" Type="Byte" />
+      <Parameter Name="retMsg" Mode="InOut" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="GetAllCompaugeUsers_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="64" />
+    <Property Type="String" Name="Email" Nullable="false" MaxLength="256" />
+    <Property Type="String" Name="Mobile" Nullable="false" MaxLength="15" />
+    <Property Type="String" Name="UserName" Nullable="false" MaxLength="64" />
+    <Property Type="String" Name="Password" Nullable="false" MaxLength="256" />
+    <Property Type="Byte" Name="RoleId" Nullable="true" />
+    <Property Type="Byte" Name="IsActive" Nullable="true" />
+    <Property Type="Byte" Name="CreatedBy" Nullable="true" />
+    <Property Type="DateTime" Name="CreatedTime" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="UpdatedTime" Nullable="true" Precision="23" />
+  </ComplexType>
+  <EntityType Name="AdWordLead">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Mobile" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Type" Type="Byte" />
+    <Property Name="InsertedAt" Type="DateTime" Precision="3" />
+    <Property Name="LeadType" Type="Byte" />
+    <Property Name="IsAssigned" Type="Byte" />
+    <Property Name="FullName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Comments" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Source" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Gclid" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="QueryString" Type="String" MaxLength="2500" FixedLength="false" Unicode="false" />
+    <Property Name="UrlReferer" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="PricingPlan" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CompId" Type="Int32" />
+    <Property Name="Address" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
+    <Property Name="Company" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="LeadStage" Type="Byte" />
+  </EntityType>
+  <EntityType Name="LeadStage">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Stage" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="isActive" Type="Boolean" />
+  </EntityType>
+  <ComplexType Name="ManageCompaugeLeads_Result">
+    <Property Type="String" Name="FullName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Company" Nullable="true" MaxLength="300" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Mobile" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="Comments" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="Address" Nullable="true" MaxLength="2000" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="64" />
+    <Property Type="String" Name="Stage" Nullable="true" MaxLength="200" />
+  </ComplexType>
+</Schema>

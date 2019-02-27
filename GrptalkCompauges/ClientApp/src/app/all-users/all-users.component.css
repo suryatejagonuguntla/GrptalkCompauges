@@ -1,0 +1,14 @@
+
+.ng-autocomplete {
+  width: 100%;
+  max-width: 600px;
+  display: table;
+  margin: 0 auto;
+}
+
+.page-container {
+  margin-top: 0px;
+  padding: 55px;
+  background-color: #f2f2f2;
+  height: auto;
+}

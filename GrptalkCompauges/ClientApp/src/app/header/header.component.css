@@ -1,0 +1,47 @@
+
+.page-header.navbar.navbar-fixed-top[_ngcontent-c1] {
+  z-index: 1040;
+}
+
+.rounded {
+  outline-color: transparent;
+}
+
+  .rounded:after {
+    border-radius: 100%;
+    box-shadow: 0 0 0 100vw rgba(255, 255, 255, 0.3);
+  }
+
+@media (orientation: portrait) {
+  .rounded:after {
+    box-shadow: 0 0 0 100vh rgba(255, 255, 255, 0.3);
+  }
+}
+
+.rounded .move {
+  border-radius: 100%;
+}
+
+.dropdown > .dropdown-menu:after, .dropdown-toggle > .dropdown-menu:after, .btn-group > .dropdown-menu:after {
+  position: absolute;
+  top: -7px;
+  left: 113px;
+  right: auto;
+  display: inline-block !important;
+  border-right: 7px solid transparent;
+  border-bottom: 7px solid #fff;
+  border-left: 7px solid transparent;
+  content: '';
+}
+
+.dropdown > .dropdown-menu:before, .dropdown-toggle > .dropdown-menu:before, .btn-group > .dropdown-menu:before {
+  position: absolute;
+  top: -8px;
+  left: 112px;
+  right: auto;
+  display: inline-block !important;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid #e0e0e0;
+  border-left: 8px solid transparent;
+  content: '';
+}

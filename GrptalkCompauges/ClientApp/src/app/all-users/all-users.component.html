@@ -1,0 +1,232 @@
+<app-header></app-header>
+
+<div class="page-container">
+  <div class="page-content" style="min-height:577px">
+    <div class="container">
+
+      <div class="stu_srch_box ">
+        <div class="clearfix srch_top row">
+          <div class="col-sm-2 col-md-2 col-xs-2 left-srch">
+            <label id="filter" class="filt_btn mb-0 select" [ngClass]="{'select': !isFiltersShow}" (click)="toogleFilter()">
+              <i class="fa fa-sliders margin-right-10"></i>
+              <span class="hidden-xs">Filters</span>
+            </label>
+          </div>
+          <div class="col-sm-7 col-md-7 col-xs-10 mid-srch">
+            <!--<input type="text" #userSearch (keyup.enter)="userSearchData(userSearch.value)" [(ngModel)]="userSearchInput" class="form-control" placeholder="Search">-->
+            <input type="text" #userSearch (keyup.enter)="userSearchData(userSearch.value)" [(ngModel)]="userSearchInput" class="form-control" placeholder="Search">
+            
+            <!--<input (keyup)="searchTerm$.next($event.target.value)">-->
+            <ul *ngIf="results">
+              <li *ngFor="let result of results | slice:0:9">
+                <a href="{{ result.latest }}" target="_blank">
+                  {{ result.name }}
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-sm-3 col-md-3 right-srch">
+            <a class="text-red" id="ad_student" (click)="open(adduser)"><i class="fa fa-plus-circle margin-right-10 margin-top-10"></i> Add User</a>
+          </div>
+        </div>
+        <div class="sbContainer">
+          <div class="sidebar bord-right" [ngClass]="{'collapsed': isFiltersShow}" id="sidebar">
+
+            <div class="clearfix padBox bord-b">
+              <label class="pull-left f_15 bold-6">Date</label>
+              <label class="pull-right indicator" (click)="isCollapsed = !isCollapsed"><i class="fa fa-minus-square-o"></i></label>
+              <div class="clearfix"></div>
+              <ul id="date" [ngbCollapse]="isCollapsed" class="collapse show margin-top-10">
+                <li>
+                  <input type="checkbox" [(ngModel)]="dateCBoxes.LDayChecked" [ngModelOptions]="{standalone: true}" (click)="selectedDate('LDayChecked' , dateCBoxes.LDayChecked)" /> Last Day
+                </li>
+                <li>
+                  <input type="checkbox" [(ngModel)]="dateCBoxes.LWeekChecked" [ngModelOptions]="{standalone: true}" (click)="selectedDate('LWeekChecked' , dateCBoxes.LWeekChecked)" /> Last Week
+                </li>
+                <li>
+                  <input type="checkbox" [(ngModel)]="dateCBoxes.LMonthChecked" [ngModelOptions]="{standalone: true}" (click)="selectedDate('LMonthChecked' ,  dateCBoxes.LMonthChecked)" /> Last Month
+                </li>
+                <li>
+                  <input type="checkbox" [(ngModel)]="dateCBoxes.CustomDate" [ngModelOptions]="{standalone: true}" (click)="selectedDate('CustomDate' ,  dateCBoxes.CustomDate)" /> Custom Date
+
+                  <div class="form-group margin-top-15">
+                    <label class="text-lite-grey f_12">From Date</label>
+                    <div class="input-group full-w">
+                      <div class="input-icon right">
+                        <i class="fa fa-calendar-o text-red btn btn-outline-secondary calendar" (click)="fd.toggle()"></i>
+                        <input type="text" [(ngModel)]="fromDate" (ngModelChange)="customDateSearch(fromDate , 'fromDate')" ngbDatepicker #fd="ngbDatepicker" (click)="fd.toggle()" class="form-control">
+
+                        <!--<ng-autocomplete [data]="countries"
+                                         [searchKeyword]="keyword"
+                                         placeHolder="Enter the Country Name"
+                                         (selected)='selectEvent($event)'
+                                         (inputChanged)='onChangeSearch($event)'
+                                         (inputFocused)='onFocused($event)'
+                                         historyIdentifier="countries"
+                                         [itemTemplate]="itemTemplateApi"
+                                         [notFoundTemplate]="notFoundTemplate">
+                        </ng-autocomplete>-->
+                        <ng-template #itemTemplateApi let-item>
+                          <a [innerHTML]="item"></a>
+                        </ng-template>
+
+                        <ng-template #notFoundTemplate let-notFound>
+                          <div [innerHTML]="notFound"></div>
+                        </ng-template>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="text-lite-grey f_12">To Date</label>
+                    <div class="input-group full-w">
+                      <div class="input-icon right">
+                        <i class="fa fa-calendar-o text-red btn btn-outline-secondary calendar" (click)="td.toggle()"></i>
+                        <input type="text" [(ngModel)]="toDate" (ngModelChange)="customDateSearch(toDate , 'toDate')" ngbDatepicker #td="ngbDatepicker" (click)="td.toggle()" class="form-control">
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+
+
+          </div>
+          <div id="sbContent" [ngClass]="{   'full-w': isFiltersShow,  'sbContent': !isFiltersShow}">
+            <table class="table table-borderd tblStudent">
+              <thead>
+                <tr>
+                  <th><input type="checkbox" (click)="selectAll()" /></th>
+                  <th>Created On</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Phone Number</th>
+                  <th>UID</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let user of users">
+
+                  <td class=""><input type="checkbox" [(ngModel)]="user.isChecked" [ngModelOptions]="{standalone: true}" (click)="selectedRow(user.id , user.isChecked)" /></td>
+                  <td>{{user.createdTime}}</td>
+                  <td>{{user.name}}</td>
+                  <td>{{user.email}}</td>
+                  <td>{{user.mobile}}</td>
+                  
+                  <td>{{user.name}}</td>
+                  <td>
+                   <a>  <span class="fa fa-edit text-red margin-right-10" (click)="edit(user)" title="Edit"></span> </a>
+                    <a><span class="fa fa-trash text-red" title="Delete" (click)="delete(user)"></span></a>
+                  </td>
+
+                </tr>
+                <!--<tr>
+                  <td class=""><input type="checkbox" /></td>
+                  <td>6 Dec 2017</td>
+                  <td>Samiksha Gupta</td>
+                  <td>xyz@email.com</td>
+                  <td>+91 9191919191</td>
+                  <td>this2wad334</td>
+                  <td>12321432312</td>
+                  <td>
+                    <span class="fa fa-edit text-red margin-right-10" title="Edit"></span>
+                    <span class="fa fa-trash text-red" title="Delete"></span>
+                  </td>
+                </tr> -->
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<ng-template #adduser let-modal="dismiss">
+
+  <div class="modal-header">
+    <div class="add-student clearfix" style="width:100%">
+      <h4 class="bold-6 pull-left text-red">{{ modalUserHeader}}</h4>
+
+      <a class="pull-right" (click)="modal('Cross click')"><img src="../../assets/predefinded/images/cross_icn.png" /></a>
+    </div>
+  </div>
+  <div class="modal-body pad-0 add_lead_pop">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label>First Name</label>
+          <input type="text" [(ngModel)]="AddUser.firstName" class="form-control" />
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label>Last Name</label>
+          <input type="text" [(ngModel)]="AddUser.secondName" class="form-control" />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label>Email</label>
+          <input type="text" [(ngModel)]="AddUser.email" email class="form-control" />
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label>Contact Number</label>
+          <input type="text" (keypress)="mobilevalidator($event)"  maxlength="20" [(ngModel)]="AddUser.mobilenumber" class="form-control" />
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label>Password</label>
+          <input type="text" [(ngModel)]="AddUser.password" class="form-control" />
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label>Confirm Password</label>
+          <input type="text" [(ngModel)]="AddUser.Confirmpassword" class="form-control" />
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="font-grey-gallery bold-6">UID: CPR009111</label>
+    </div>
+  </div>
+
+  <div class="form-group text-center margin-bottom-30">
+    <button type="button" (click)="(modalButton == 'Add' && AddUserM()) || (modalButton == 'Edit' && editConfirm())" class="btn btn-red">{{ modalButton }}</button>
+  </div>
+
+
+</ng-template>
+
+<ng-template #deleteUser let-modal="dismiss">
+
+  <div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel">{{ modalDeleteHeader }}</h5>
+    <a class="pull-right" (click)="modal('Cross click')"><img src="../../assets/predefinded/images/cross_icn.png" /></a>
+  </div>
+  <div class="modal-body">
+    Are you sure to delete ?
+  </div>
+  <div class="modal-footer">
+    
+    <button type="button" class="btn btn-danger" (click)="deleteConfirm()">Save changes</button>
+  </div>
+
+
+</ng-template>
+
+
